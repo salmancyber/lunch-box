@@ -43,7 +43,7 @@ export default {
       bestIngredients: [],
       goodIngredients: [],
       filteredRecipes: [],
-      loading: false,
+      loading: true,
       viewRecipes: false
     }
   },
@@ -51,10 +51,9 @@ export default {
     this.ingredients = DataService.getIngredients();
     this.recipes = DataService.getRecipes();
     
-    this.loading = false;
     this.getbestIngredients();
     this.getFilteredRecipes();
-    this.loading = true;
+    this.loading = false;
   },
   methods: {
     showRecipes() {
