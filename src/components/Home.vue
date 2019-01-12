@@ -32,7 +32,7 @@
 
 <script>
 import DataService from '@/services/JsonService';
-import * as moment from 'moment';
+import moment from 'moment';
 
 export default {
   name:  'home',
@@ -77,8 +77,8 @@ export default {
       
       // filtering recipes with good ingredients
       tmpArr = this.recipes.filter(item => {
-        //return item.ingredients.every(i => this.bestIngredients.find(x => x.title == i))
-        return item.ingredients.every(i => true)
+        return item.ingredients.every(i => this.bestIngredients.find(x => x.title == i))
+        // return item.ingredients.every(i => true)
       })
 
       // sorting recipes if ingredients are past best-before

@@ -14,11 +14,5 @@
   }, {
     "title": "Omelette",
     "ingredients": ["Eggs", "Mushroom", "Milk", "Salt", "Pepper", "Spinach"]
-  }, {
-    "title": "Burger",
-    "ingredients": ["Ketchup", "Mustard"]
-  }, {
-    "title": "Pizza",
-    "ingredients": ["Cheese", "Bread"]
   }]
 }
