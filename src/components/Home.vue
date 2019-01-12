@@ -6,8 +6,15 @@
     <div class="content">
       <button @click="showRecipes" class="hvr-bounce-in">What's for lunch</button>
       <div v-if="viewRecipes" class="recipes">
-        <div v-for="(recipe, index) in filteredRecipes" :key="index">
-          {{ recipe.title }}
+        <div class="recipe" v-for="(recipe, index) in filteredRecipes" :key="index">
+          <div><b>Name:</b> {{ recipe.title }}</div>
+
+          <div class="ingredients">
+            <b>Ingredients</b>
+            <span v-for="(ingredient, index2) in recipe.ingredients" :key="index2">
+              {{ingredient}}
+            </span>
+          </div>
         </div>
       </div>
     </div>
@@ -70,8 +77,8 @@ export default {
       
       // filtering recipes with good ingredients
       tmpArr = this.recipes.filter(item => {
-        return item.ingredients.every(i => this.bestIngredients.find(x => x.title == i))
-        //return item.ingredients.every(i => true)
+        //return item.ingredients.every(i => this.bestIngredients.find(x => x.title == i))
+        return item.ingredients.every(i => true)
       })
 
       // sorting recipes if ingredients are past best-before
@@ -81,9 +88,6 @@ export default {
         else
           this.filteredRecipes.unshift(item); // pushing recipes with best ingredients at the beginning
       });
-
-    },
-    sortByBestBefore() {
 
     }
   }
@@ -106,16 +110,23 @@ export default {
     transition: all 0.25s;
   }
   .recipes {
-    min-width: 300px;
+    min-width: 400px;
     width: fit-content;
     width: -moz-fit-content;
     text-align: left;
     margin: 50px auto 0px;
-    padding: 20px;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   }
   .recipes > div {
-    margin: 10px 0px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    padding: 20px;;
+  }
+  .recipes > div > .ingredients {
+    color: gray;
+    font-size: 12px;
+  }
+  .recipes > div > .ingredients > span:not(:last-child)::after {
+    content: ",";
   }
   .hvr-bounce-in {
   display: inline-block;
