@@ -50,8 +50,11 @@ export default {
   mounted() {
     this.ingredients = DataService.getIngredients();
     this.recipes = DataService.getRecipes();
+    
+    this.loading = false;
     this.getbestIngredients();
     this.getFilteredRecipes();
+    this.loading = true;
   },
   methods: {
     showRecipes() {
@@ -78,7 +81,6 @@ export default {
       // filtering recipes with good ingredients
       tmpArr = this.recipes.filter(item => {
         return item.ingredients.every(i => this.bestIngredients.find(x => x.title == i))
-        // return item.ingredients.every(i => true)
       })
 
       // sorting recipes if ingredients are past best-before
